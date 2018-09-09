@@ -28,14 +28,16 @@ namespace LibJpConjSharp
         {
             if(n >= input.Length || n < 0)
                 return input;
-            return input.Substring(input.Length - 1 - n);
+            return input.Substring(input.Length - n);
         }
 
         public static string Chop(string input, int n)
         {
-            if(n >= input.Length || n < 0)
-                return input;
-            return input.Remove(input.Length - 1 - n);
+            if (n < 0)
+                return Chop(input, 0);
+            if(n >= input.Length)
+                return "";
+            return input.Remove(input.Length - n);
         }
     }
 }

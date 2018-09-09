@@ -25,6 +25,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("LibJpConjSharp.Tests")]
 
 namespace LibJpConjSharp
 {
@@ -39,6 +42,16 @@ namespace LibJpConjSharp
         public static EdictType FromDescription(string description)
         {
             return mapping[description];
+        }
+
+        public static EdictType? FromDescriptionOrNull(string description)
+        {
+            if (mapping.TryGetValue(description, out var value))
+            {
+                return value;
+            }
+
+            return null;
         }
 
         // https://stackoverflow.com/questions/2650080/how-to-get-c-sharp-enum-description-from-value
@@ -74,10 +87,10 @@ namespace LibJpConjSharp
         [Description("Nidan verb with 'u' ending (archaic)")]
         v2a_s = 2,
 
-        [Description("Yondan verb with 'hu/fu' ending (archaic)")]
+        [Description("Yodan verb with `hu/fu' ending (archaic)")]
         v4h = 3,
 
-        [Description("Yondan verb with 'ru' ending (archaic)")]
+        [Description("Yodan verb with `ru' ending (archaic)")]
         v4r = 4,
 
         [Description("Godan verb (not completely classified)")]
@@ -86,46 +99,46 @@ namespace LibJpConjSharp
         [Description("Godan verb - -aru special class")]
         v5aru = 6,
 
-        [Description("Godan verb with 'bu' ending")]
+        [Description("Godan verb with `bu' ending")]
         v5b = 7,
 
-        [Description("Godan verb with 'gu' ending")]
+        [Description("Godan verb with `gu' ending")]
         v5g = 8,
 
-        [Description("Godan verb with 'ku' ending")]
+        [Description("Godan verb with `ku' ending")]
         v5k = 9,
 
         [Description("Godan verb - iku/yuku special class")]
         v5k_s = 10,
 
-        [Description("Godan verb with 'mu' ending")]
+        [Description("Godan verb with `mu' ending")]
         v5m = 11,
 
-        [Description("Godan verb with 'nu' ending")]
+        [Description("Godan verb with `nu' ending")]
         v5n = 12,
 
-        [Description("Godan verb with 'ru' ending")]
+        [Description("Godan verb with `ru' ending")]
         v5r = 13,
 
-        [Description("Godan verb with 'ru' ending (irregular verb)")]
+        [Description("Godan verb with `ru' ending (irregular verb)")]
         v5r_i = 14,
 
-        [Description("Godan verb with 'su' ending")]
+        [Description("Godan verb with `su' ending")]
         v5s = 15,
 
-        [Description("Godan verb with 'tsu' ending")]
+        [Description("Godan verb with `tsu' ending")]
         v5t = 16,
 
-        [Description("Godan verb with 'u' ending")]
+        [Description("Godan verb with `u' ending")]
         v5u = 17,
 
-        [Description("Godan verb with 'u' ending (special class)")]
+        [Description("Godan verb with `u' ending (special class)")]
         v5u_s = 18,
 
         [Description("Godan verb - uru old class verb (old form of Eru)")]
         v5uru = 19,
 
-        [Description("Godan verb with 'zu' ending")]
+        [Description("Godan verb with `zu' ending")]
         v5z = 20,
 
         [Description("Ichidan verb - zuru verb - (alternative form of -jiru verbs)")]
@@ -148,6 +161,8 @@ namespace LibJpConjSharp
 
         [Description("suru verb - special class")]
         vs_s = 27
+
+        // Ichidan verb - kureru special class
     }
 
     /*

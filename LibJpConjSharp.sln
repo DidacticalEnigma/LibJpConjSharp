@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.28010.2019
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibJpConjSharp", "LibJpConjSharp\LibJpConjSharp.csproj", "{31A0B991-2002-4C6E-8426-7511509BDC6E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7EF0909C-E697-426E-89E0-820BC7A12E5F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibJpConjSharp.Tests", "LibJpConjSharp.Tests\LibJpConjSharp.Tests.csproj", "{3D07A3F9-DDB3-4D46-8C06-1E550910D260}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,10 @@ Global
 		{31A0B991-2002-4C6E-8426-7511509BDC6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31A0B991-2002-4C6E-8426-7511509BDC6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31A0B991-2002-4C6E-8426-7511509BDC6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D07A3F9-DDB3-4D46-8C06-1E550910D260}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D07A3F9-DDB3-4D46-8C06-1E550910D260}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D07A3F9-DDB3-4D46-8C06-1E550910D260}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D07A3F9-DDB3-4D46-8C06-1E550910D260}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
