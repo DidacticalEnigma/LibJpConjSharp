@@ -108,7 +108,7 @@ namespace LibJpConjSharp
         [Description("Godan verb with `ku' ending")]
         v5k = 9,
 
-        [Description("Godan verb - iku/yuku special class")]
+        [Description("Godan verb - Iku/Yuku special class")]
         v5k_s = 10,
 
         [Description("Godan verb with `mu' ending")]
