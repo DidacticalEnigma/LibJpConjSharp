@@ -26,9 +26,19 @@ namespace LibJpConjSharp.Tests
         {
             var word = "する";
             var wordClass = EdictType.vs_i;
-            
-            Assert.AreEqual("|し|て", JpConj.Conjugate(word, wordClass, CForm.TeForm, Politeness.Plain, Polarity.Affirmative));
 
+            Assert.AreEqual("|し|よう", JpConj.Conjugate(word, wordClass, CForm.Volitional, Politeness.Plain, Polarity.Affirmative));
+            Assert.AreEqual("|し|て", JpConj.Conjugate(word, wordClass, CForm.TeForm, Politeness.Plain, Polarity.Affirmative));
+        }
+
+        [Test]
+        public void Kuru()
+        {
+            var word = "くる";
+            var wordClass = EdictType.vk;
+
+            Assert.AreEqual("き||た", JpConj.Conjugate(word, wordClass, CForm.Past, Politeness.Plain, Polarity.Affirmative));
+            Assert.AreEqual("き||て", JpConj.Conjugate(word, wordClass, CForm.TeForm, Politeness.Plain, Polarity.Affirmative));
         }
 
         [Test]

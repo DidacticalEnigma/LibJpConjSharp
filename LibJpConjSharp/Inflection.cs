@@ -36,21 +36,21 @@ namespace LibJpConjSharp
         private static string tEnd(string end, bool te)
         {
 
-            if("ぬむぶぐ".Contains(end))
+            if ("ぬむぶぐ".Contains(end))
             {
-                if(te)
+                if (te)
                     return "|で";
                 return "|だ";
             }
 
-            if(te)
+            if (te)
                 return "|て";
             return "|た";
         }
 
         public static string Conjugate(string verb, EdictType type, CForm form, Politeness polite, Polarity affirmative)
         {
-            if(verb.Length < 2)
+            if (verb.Length < 2)
                 return verb;
 
             string radical = verb;
@@ -59,218 +59,223 @@ namespace LibJpConjSharp
 
             string bar = "|";
 
-            switch(form)
+            switch (form)
             {
 
                 case CForm.TeForm:
-                if(affirmative != 0)
-                    return VerbStem.tForm(radical, type) + tEnd(end, true);
-                return VerbStem.aForm(radical, type) + "|なくて";
+                    if (affirmative != 0)
+                        return VerbStem.tForm(radical, type) + tEnd(end, true);
+                    return VerbStem.aForm(radical, type) + "|なくて";
 
                 case CForm.Present:
-                if(polite != 0)
-                {
-                    if(affirmative != 0)
-                        return VerbStem.iForm(radical, type) + "|ます";
-                    return VerbStem.iForm(radical, type) + "|ません";
-                }
-                //plain
-                if(affirmative != 0)
-                    return VerbStem.uForm(radical, type) + "|";
-                return VerbStem.aForm(radical, type) + "|ない";
+                    if (polite != 0)
+                    {
+                        if (affirmative != 0)
+                            return VerbStem.iForm(radical, type) + "|ます";
+                        return VerbStem.iForm(radical, type) + "|ません";
+                    }
+                    //plain
+                    if (affirmative != 0)
+                        return VerbStem.uForm(radical, type) + "|";
+                    return VerbStem.aForm(radical, type) + "|ない";
 
                 case CForm.Past:
-                if(polite != 0)
-                {
-                    if(affirmative != 0)
-                        return VerbStem.iForm(radical, type) + "|ました";
-                    return VerbStem.iForm(radical, type) + "|ませんでした";
-                }
-                //plain
-                if(affirmative != 0)
-                    return VerbStem.tForm(radical, type) + tEnd(end, false);
-                return VerbStem.aForm(radical, type) + "|なかった";
+                    if (polite != 0)
+                    {
+                        if (affirmative != 0)
+                            return VerbStem.iForm(radical, type) + "|ました";
+                        return VerbStem.iForm(radical, type) + "|ませんでした";
+                    }
+                    //plain
+                    if (affirmative != 0)
+                        return VerbStem.tForm(radical, type) + tEnd(end, false);
+                    return VerbStem.aForm(radical, type) + "|なかった";
 
                 case CForm.Provision:
-                if(polite != 0)
-                {
-                    if(affirmative != 0)
-                        return VerbStem.iForm(radical, type) + "|ますれば";
-                    return VerbStem.iForm(radical, type) + "|ませんならば";
-                }
-                //plain
-                if(affirmative != 0)
-                    return VerbStem.eForm(radical, type) + "|ば";
-                return VerbStem.aForm(radical, type) + "|なければ";
+                    if (polite != 0)
+                    {
+                        if (affirmative != 0)
+                            return VerbStem.iForm(radical, type) + "|ますれば";
+                        return VerbStem.iForm(radical, type) + "|ませんならば";
+                    }
+                    //plain
+                    if (affirmative != 0)
+                        return VerbStem.eForm(radical, type) + "|ば";
+                    return VerbStem.aForm(radical, type) + "|なければ";
 
                 case CForm.Condition:
-                if(polite != 0)
-                {
-                    if(affirmative != 0)
-                        return VerbStem.iForm(radical, type) + "|ましたら";
-                    return VerbStem.iForm(radical, type) + "|ませんでしたら";
-                }
-                //plain
-                if(affirmative != 0)
-                    return VerbStem.tForm(radical, type) + tEnd(end, false) + "ら";
-                return VerbStem.aForm(radical, type) + "|なかったら";
+                    if (polite != 0)
+                    {
+                        if (affirmative != 0)
+                            return VerbStem.iForm(radical, type) + "|ましたら";
+                        return VerbStem.iForm(radical, type) + "|ませんでしたら";
+                    }
+                    //plain
+                    if (affirmative != 0)
+                        return VerbStem.tForm(radical, type) + tEnd(end, false) + "ら";
+                    return VerbStem.aForm(radical, type) + "|なかったら";
 
                 case CForm.Imperative:
-                if(polite != 0)
-                {
-                    if(affirmative != 0)
-                        return VerbStem.tForm(radical, type) + tEnd(end, true) + "下さい";
-                    return VerbStem.aForm(radical, type) + "|ないで下さい";
-                }
-                //plain
-                if(affirmative != 0)
-                    return VerbStem.eImpForm(radical, type) + "|";
-                return VerbStem.uForm(radical, type) + "|な";
+                    if (polite != 0)
+                    {
+                        if (affirmative != 0)
+                            return VerbStem.tForm(radical, type) + tEnd(end, true) + "下さい";
+                        return VerbStem.aForm(radical, type) + "|ないで下さい";
+                    }
+                    //plain
+                    if (affirmative != 0)
+                        return VerbStem.eImpForm(radical, type) + "|";
+                    return VerbStem.uForm(radical, type) + "|な";
 
                 case CForm.Volitional:
-                if(polite != 0)
-                {
-                    if(affirmative != 0)
-                        return VerbStem.iForm(radical, type) + "|ましょう";
-                    return VerbStem.uForm(radical, type) + "|のをやめましょう";
-                }
-                //plain
-                if(affirmative != 0)
-                    return VerbStem.oForm(radical, type) + "|う";
-                return VerbStem.uForm(radical, type) + "|のをやめよう";
+                    if (polite != 0)
+                    {
+                        if (affirmative != 0)
+                            return VerbStem.iForm(radical, type) + "|ましょう";
+                        return VerbStem.uForm(radical, type) + "|のをやめましょう";
+                    }
+                    //plain
+                    if (affirmative != 0)
+                    {
+                        if (type == EdictType.vs_i)
+                            return VerbStem.oForm(radical, type) + "|よう";
+                        return VerbStem.oForm(radical, type) + "|う";
+                    }
+
+                    return VerbStem.uForm(radical, type) + "|のをやめよう";
 
                 case CForm.PresentContinuous:
-                if(polite != 0)
-                {
-                    if(affirmative != 0)
-                        return VerbStem.tForm(radical, type) + tEnd(end, true) + "います";
-                    return VerbStem.tForm(radical, type) + tEnd(end, true) + "いません";
-                }
-                //plain
-                if(affirmative != 0)
-                    return VerbStem.tForm(radical, type) + tEnd(end, true) + "いる";
-                return VerbStem.tForm(radical, type) + tEnd(end, true) + "いない";
+                    if (polite != 0)
+                    {
+                        if (affirmative != 0)
+                            return VerbStem.tForm(radical, type) + tEnd(end, true) + "います";
+                        return VerbStem.tForm(radical, type) + tEnd(end, true) + "いません";
+                    }
+                    //plain
+                    if (affirmative != 0)
+                        return VerbStem.tForm(radical, type) + tEnd(end, true) + "いる";
+                    return VerbStem.tForm(radical, type) + tEnd(end, true) + "いない";
 
                 case CForm.PastContinuous:
-                if(polite != 0)
-                {
-                    if(affirmative != 0)
-                        return VerbStem.tForm(radical, type) + tEnd(end, true) + "いました";
-                    return VerbStem.tForm(radical, type) + tEnd(end, true) + "いませんでした";
-                }
-                //plain
-                if(affirmative != 0)
-                    return VerbStem.tForm(radical, type) + tEnd(end, true) + "いた";
-                return VerbStem.tForm(radical, type) + tEnd(end, true) + "いなかった";
+                    if (polite != 0)
+                    {
+                        if (affirmative != 0)
+                            return VerbStem.tForm(radical, type) + tEnd(end, true) + "いました";
+                        return VerbStem.tForm(radical, type) + tEnd(end, true) + "いませんでした";
+                    }
+                    //plain
+                    if (affirmative != 0)
+                        return VerbStem.tForm(radical, type) + tEnd(end, true) + "いた";
+                    return VerbStem.tForm(radical, type) + tEnd(end, true) + "いなかった";
 
                 case CForm.Potential:
 
-                if(type == EdictType.v1)
-                {
-                    radical += "||られ"; // radical + られ
-                    type = EdictType.v0; //to prevent changing the radical when using eForm
-                    bar = "";
-                }
-                else if(type >= EdictType.vs)
-                { //suru verbs numbers are 27 26 25 24
-                    if(type != EdictType.vs_c) // suru verb number 25 ends with su,  no need to chop it
-                        radical = Utils.Chop(radical, 1);
-                    radical += "||でき";
-                    type = EdictType.v0; //to prevent changing the radical when using eForm
-                    bar = "";
-                }
+                    if (type == EdictType.v1)
+                    {
+                        radical += "||られ"; // radical + られ
+                        type = EdictType.v0; //to prevent changing the radical when using eForm
+                        bar = "";
+                    }
+                    else if (type >= EdictType.vs)
+                    { //suru verbs numbers are 27 26 25 24
+                        if (type != EdictType.vs_c) // suru verb number 25 ends with su,  no need to chop it
+                            radical = Utils.Chop(radical, 1);
+                        radical += "||でき";
+                        type = EdictType.v0; //to prevent changing the radical when using eForm
+                        bar = "";
+                    }
 
-                if(polite != 0)
-                {
-                    if(affirmative != 0)
-                        return VerbStem.eForm(radical, type) + bar + "ます";
-                    return VerbStem.eForm(radical, type) + bar + "ません";
-                }
-                //plain
-                if(affirmative != 0)
-                    return VerbStem.eForm(radical, type) + bar + "る";
-                return VerbStem.eForm(radical, type) + bar + "ない";
+                    if (polite != 0)
+                    {
+                        if (affirmative != 0)
+                            return VerbStem.eForm(radical, type) + bar + "ます";
+                        return VerbStem.eForm(radical, type) + bar + "ません";
+                    }
+                    //plain
+                    if (affirmative != 0)
+                        return VerbStem.eForm(radical, type) + bar + "る";
+                    return VerbStem.eForm(radical, type) + bar + "ない";
 
                 case CForm.Passive:
-                if(type == EdictType.v1)
-                {
-                    radical += "||ら";
-                    type = EdictType.v0; //to prevent changing the radical when using eForm
-                    bar = "";
-                }
-                else if(type >= EdictType.vs)
-                { //suru verbs numbers are 27 26 25 24
-                    if(type != EdictType.vs_c) // suru verb number 27 ends with su,  no need to chop it
-                        radical = Utils.Chop(radical, 1);
-                    radical += "||さ";
-                    type = EdictType.v0; //to prevent changing the radical when using eForm
-                    bar = "";
-                }
+                    if (type == EdictType.v1)
+                    {
+                        radical += "||ら";
+                        type = EdictType.v0; //to prevent changing the radical when using eForm
+                        bar = "";
+                    }
+                    else if (type >= EdictType.vs)
+                    { //suru verbs numbers are 27 26 25 24
+                        if (type != EdictType.vs_c) // suru verb number 27 ends with su,  no need to chop it
+                            radical = Utils.Chop(radical, 1);
+                        radical += "||さ";
+                        type = EdictType.v0; //to prevent changing the radical when using eForm
+                        bar = "";
+                    }
 
-                if(polite != 0)
-                {
-                    if(affirmative != 0)
-                        return VerbStem.aForm(radical, type) + bar + "れます";
-                    return VerbStem.aForm(radical, type) + bar + "れません";
-                }
-                //plain
-                if(affirmative != 0)
-                    return VerbStem.aForm(radical, type) + bar + "れる";
-                return VerbStem.aForm(radical, type) + bar + "れない";
+                    if (polite != 0)
+                    {
+                        if (affirmative != 0)
+                            return VerbStem.aForm(radical, type) + bar + "れます";
+                        return VerbStem.aForm(radical, type) + bar + "れません";
+                    }
+                    //plain
+                    if (affirmative != 0)
+                        return VerbStem.aForm(radical, type) + bar + "れる";
+                    return VerbStem.aForm(radical, type) + bar + "れない";
 
                 case CForm.Causative:
-                if(type == EdictType.v1)
-                {
-                    radical += "||さ";
-                    type = EdictType.v0; //to prevent changing the radical when using eForm
-                    bar = "";
-                }
-                else if(type >= EdictType.vs)
-                { //suru verbs numbers are 27 26 25 24
-                    if(type != EdictType.vs_c) // suru verb number 27 ends with su,  no need to chop it
-                        radical = Utils.Chop(radical, 1);
-                    radical += "||さ";
-                    type = EdictType.v0; //to prevent changing the radical when using eForm
-                    bar = "";
-                }
+                    if (type == EdictType.v1)
+                    {
+                        radical += "||さ";
+                        type = EdictType.v0; //to prevent changing the radical when using eForm
+                        bar = "";
+                    }
+                    else if (type >= EdictType.vs)
+                    { //suru verbs numbers are 27 26 25 24
+                        if (type != EdictType.vs_c) // suru verb number 27 ends with su,  no need to chop it
+                            radical = Utils.Chop(radical, 1);
+                        radical += "||さ";
+                        type = EdictType.v0; //to prevent changing the radical when using eForm
+                        bar = "";
+                    }
 
-                if(polite != 0)
-                {
-                    if(affirmative != 0)
-                        return VerbStem.aForm(radical, type) + bar + "せます";
-                    return VerbStem.aForm(radical, type) + bar + "せません";
-                }
-                //plain
-                if(affirmative != 0)
-                    return VerbStem.aForm(radical, type) + bar + "せる";
-                return VerbStem.aForm(radical, type) + bar + "せない";
+                    if (polite != 0)
+                    {
+                        if (affirmative != 0)
+                            return VerbStem.aForm(radical, type) + bar + "せます";
+                        return VerbStem.aForm(radical, type) + bar + "せません";
+                    }
+                    //plain
+                    if (affirmative != 0)
+                        return VerbStem.aForm(radical, type) + bar + "せる";
+                    return VerbStem.aForm(radical, type) + bar + "せない";
 
                 case CForm.CausativePassive:
-                if(type == EdictType.v1)
-                {
-                    radical += "||さ";
-                    type = EdictType.v0; //to prevent changing the radical when using eForm
-                    bar = "";
-                }
-                else if(type >= EdictType.vs)
-                { //suru verbs numbers are 27 26 25 24
-                    if(type != EdictType.vs_c) // suru verb number 27 ends with su,  no need to chop it
-                        radical = Utils.Chop(radical, 1);
-                    radical += "||さ";
-                    type = EdictType.v0; //to prevent changing the radical when using eForm
-                    bar = "";
-                }
+                    if (type == EdictType.v1)
+                    {
+                        radical += "||さ";
+                        type = EdictType.v0; //to prevent changing the radical when using eForm
+                        bar = "";
+                    }
+                    else if (type >= EdictType.vs)
+                    { //suru verbs numbers are 27 26 25 24
+                        if (type != EdictType.vs_c) // suru verb number 27 ends with su,  no need to chop it
+                            radical = Utils.Chop(radical, 1);
+                        radical += "||さ";
+                        type = EdictType.v0; //to prevent changing the radical when using eForm
+                        bar = "";
+                    }
 
-                if(polite != 0)
-                {
-                    if(affirmative != 0)
-                        return VerbStem.aForm(radical, type) + bar + "せられます";
-                    return VerbStem.aForm(radical, type) + bar + "せられません";
-                }
-                //plain
-                if(affirmative != 0)
-                    return VerbStem.aForm(radical, type) + bar + "せられる";
-                return VerbStem.aForm(radical, type) + bar + "せられない";
+                    if (polite != 0)
+                    {
+                        if (affirmative != 0)
+                            return VerbStem.aForm(radical, type) + bar + "せられます";
+                        return VerbStem.aForm(radical, type) + bar + "せられません";
+                    }
+                    //plain
+                    if (affirmative != 0)
+                        return VerbStem.aForm(radical, type) + bar + "せられる";
+                    return VerbStem.aForm(radical, type) + bar + "せられない";
             }
 
             return verb;
@@ -279,14 +284,14 @@ namespace LibJpConjSharp
 
         public static string Katsuyou(string verb, EdictType type, KForm form)
         {
-            if(verb.Length < 2)
+            if (verb.Length < 2)
                 return verb;
 
             string radical = verb;
             radical = Utils.Chop(radical, 1);
 
 
-            switch(form)
+            switch (form)
             {
                 case KForm.ImperfectiveA:
                     return VerbStem.aForm(radical, type);
