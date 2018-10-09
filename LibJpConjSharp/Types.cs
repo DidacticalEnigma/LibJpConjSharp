@@ -54,6 +54,16 @@ namespace LibJpConjSharp
             return null;
         }
 
+        public static string ToLongString(EdictType type)
+        {
+            if (inverseMapping.TryGetValue(type, out var value))
+            {
+                return value;
+            }
+
+            return type.ToString();
+        }
+
         // https://stackoverflow.com/questions/2650080/how-to-get-c-sharp-enum-description-from-value
         private static string GetEnumDescription(Enum value)
         {
@@ -74,6 +84,9 @@ namespace LibJpConjSharp
         private static readonly Dictionary<string, EdictType> mapping = Enum.GetValues(typeof(EdictType))
             .Cast<EdictType>()
             .ToDictionary(e => GetEnumDescription(e), e => e);
+
+        private static readonly Dictionary<EdictType, string> inverseMapping =
+            mapping.ToDictionary(kvp => kvp.Value, kvp => kvp.Key);
     }
 
     public enum EdictType
