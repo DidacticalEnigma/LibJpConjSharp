@@ -19,6 +19,7 @@ namespace LibJpConjSharp.Tests
             Assert.AreEqual("あわせ||て", JpConj.Conjugate(word, wordClass, CForm.TeForm, Politeness.Plain, Polarity.Affirmative));
             Assert.AreEqual("あわせ||た", JpConj.Conjugate(word, wordClass, CForm.Past, Politeness.Plain, Polarity.Affirmative));
             Assert.AreEqual("あわせ||ます", JpConj.Conjugate(word, wordClass, CForm.Present, Politeness.Polite));
+            Assert.AreEqual("あわせ||よう", JpConj.Conjugate(word, wordClass, CForm.Volitional, Politeness.Plain));
         }
 
         [Test]
@@ -56,8 +57,10 @@ namespace LibJpConjSharp.Tests
         [Test]
         public void GodanAru()
         {
-            var word = "いらっしゃる";
+            var word = "いらっしゃる"; 
             var wordClass = EdictType.v5aru;
+
+            Assert.AreEqual("いらっしゃ|ろ|う", JpConj.Conjugate(word, wordClass, CForm.Volitional, Politeness.Plain));
         }
 
         [Test]
@@ -65,6 +68,7 @@ namespace LibJpConjSharp.Tests
         {
             var word = "運ぶ";
             var wordClass = EdictType.v5b;
+            Assert.AreEqual("運|ぼ|う", JpConj.Conjugate(word, wordClass, CForm.Volitional, Politeness.Plain));
         }
 
         [Test]
@@ -72,6 +76,7 @@ namespace LibJpConjSharp.Tests
         {
             var word = "游ぐ";
             var wordClass = EdictType.v5g;
+            Assert.AreEqual("游|ご|う", JpConj.Conjugate(word, wordClass, CForm.Volitional, Politeness.Plain));
         }
 
         [Test]
@@ -79,6 +84,7 @@ namespace LibJpConjSharp.Tests
         {
             var word = "艶めく";
             var wordClass = EdictType.v5k;
+            Assert.AreEqual("艶め|こ|う", JpConj.Conjugate(word, wordClass, CForm.Volitional, Politeness.Plain));
         }
 
         [Test]
@@ -93,6 +99,7 @@ namespace LibJpConjSharp.Tests
         {
             var word = "刷り込む";
             var wordClass = EdictType.v5m;
+            Assert.AreEqual("刷り込|も|う", JpConj.Conjugate(word, wordClass, CForm.Volitional, Politeness.Plain));
         }
 
         [Test]
@@ -100,6 +107,7 @@ namespace LibJpConjSharp.Tests
         {
             var word = "死ぬ";
             var wordClass = EdictType.v5n;
+            Assert.AreEqual("死|の|う", JpConj.Conjugate(word, wordClass, CForm.Volitional, Politeness.Plain));
         }
 
         [Test]
@@ -107,13 +115,16 @@ namespace LibJpConjSharp.Tests
         {
             var word = "あやまる";
             var wordClass = EdictType.v5r;
+            Assert.AreEqual("あやま|ろ|う", JpConj.Conjugate(word, wordClass, CForm.Volitional, Politeness.Plain));
         }
 
         [Test]
         public void GodanRuIrregular()
         {
-            var word = "脚がある";
+            var word = "ある";
             var wordClass = EdictType.v5r_i;
+
+            Assert.AreEqual("あ||ろう", JpConj.Conjugate(word, wordClass, CForm.Volitional, Politeness.Plain));
         }
 
         [Test]
@@ -121,6 +132,7 @@ namespace LibJpConjSharp.Tests
         {
             var word = "螫す";
             var wordClass = EdictType.v5s;
+            Assert.AreEqual("螫|そ|う", JpConj.Conjugate(word, wordClass, CForm.Volitional, Politeness.Plain));
         }
 
         [Test]
@@ -128,6 +140,7 @@ namespace LibJpConjSharp.Tests
         {
             var word = "持つ";
             var wordClass = EdictType.v5t;
+            Assert.AreEqual("持|と|う", JpConj.Conjugate(word, wordClass, CForm.Volitional, Politeness.Plain));
         }
 
         [Test]
@@ -135,6 +148,7 @@ namespace LibJpConjSharp.Tests
         {
             var word = "行う";
             var wordClass = EdictType.v5u;
+            Assert.AreEqual("行|お|う", JpConj.Conjugate(word, wordClass, CForm.Volitional, Politeness.Plain));
         }
 
         [Test]
@@ -175,6 +189,7 @@ namespace LibJpConjSharp.Tests
 
             Assert.AreEqual("き||た", JpConj.Conjugate(word, wordClass, CForm.Past, Politeness.Plain, Polarity.Affirmative));
             Assert.AreEqual("き||て", JpConj.Conjugate(word, wordClass, CForm.TeForm, Politeness.Plain, Polarity.Affirmative));
+            Assert.AreEqual("こ|よ|う", JpConj.Conjugate(word, wordClass, CForm.Volitional, Politeness.Plain));
         }
 
         [Test]
