@@ -10,16 +10,28 @@ namespace LibJpConjSharp.Tests
 {
     public class Basic
     {
-        [Test]
-        public void Ichidan()
+
+        [TestCase("あわせ||て", CForm.TeForm)]
+        [TestCase("あわせ|る|", CForm.Present)]
+        [TestCase("あわせ||た", CForm.Past)]
+        [TestCase("あわせ|れ|ば", CForm.Provision)]
+        [TestCase("あわせ||たら", CForm.Condition)]
+        [TestCase("あわせ|(ろ/よ)|", CForm.Imperative)]
+        [TestCase("あわせ||よう", CForm.Volitional)]
+        [TestCase("あわせ||ている", CForm.PresentContinuous)]
+        [TestCase("あわせ||ていた", CForm.PastContinuous)]
+        [TestCase("あわせ||られる", CForm.Passive)]
+        [TestCase("あわせ||させる", CForm.Causative)]
+        [TestCase("あわせ||させられる", CForm.CausativePassive)]
+        [TestCase("あわせ||られる", CForm.Potential)]
+        [TestCase("あわせ||ない", CForm.Present, Politeness.Plain, Polarity.Negative)]
+        [TestCase("あわせ||ます", CForm.Present, Politeness.Polite, Polarity.Affirmative)]
+        public void Ichidan(string conjugatedWord, CForm form, Politeness politeness = Politeness.Plain, Polarity polarity = Polarity.Affirmative)
         {
             var word = "あわせる";
             var wordClass = EdictType.v1;
-            Assert.AreEqual("あわせ||ない", JpConj.Conjugate(word, wordClass, CForm.Present, Politeness.Plain, Polarity.Negative));
-            Assert.AreEqual("あわせ||て", JpConj.Conjugate(word, wordClass, CForm.TeForm, Politeness.Plain, Polarity.Affirmative));
-            Assert.AreEqual("あわせ||た", JpConj.Conjugate(word, wordClass, CForm.Past, Politeness.Plain, Polarity.Affirmative));
-            Assert.AreEqual("あわせ||ます", JpConj.Conjugate(word, wordClass, CForm.Present, Politeness.Polite));
-            Assert.AreEqual("あわせ||よう", JpConj.Conjugate(word, wordClass, CForm.Volitional, Politeness.Plain));
+
+            Assert.AreEqual(conjugatedWord, JpConj.Conjugate(word, wordClass, form, politeness, polarity));
         }
 
         [Test]
@@ -54,105 +66,273 @@ namespace LibJpConjSharp.Tests
             var wordClass = EdictType.v5;
         }
 
-        [Test]
-        public void GodanAru()
+        [TestCase("", CForm.TeForm)]
+        [TestCase("", CForm.Present)]
+        [TestCase("", CForm.Past)]
+        [TestCase("", CForm.Provision)]
+        [TestCase("", CForm.Condition)]
+        [TestCase("", CForm.Imperative)]
+        [TestCase("いらっしゃ|ろ|う", CForm.Volitional)]
+        [TestCase("", CForm.PresentContinuous)]
+        [TestCase("", CForm.PastContinuous)]
+        [TestCase("", CForm.Passive)]
+        [TestCase("", CForm.Causative)]
+        [TestCase("", CForm.CausativePassive)]
+        [TestCase("", CForm.Potential)]
+        [TestCase("いらっしゃ|い|ます", CForm.Present, Politeness.Polite, Polarity.Affirmative)]
+        public void GodanAru(string conjugatedWord, CForm form, Politeness politeness = Politeness.Plain, Polarity polarity = Polarity.Affirmative)
         {
             var word = "いらっしゃる"; 
             var wordClass = EdictType.v5aru;
-
-            Assert.AreEqual("いらっしゃ|ろ|う", JpConj.Conjugate(word, wordClass, CForm.Volitional, Politeness.Plain));
+            
+            Assert.AreEqual(conjugatedWord, JpConj.Conjugate(word, wordClass, form, politeness, polarity));
         }
 
-        [Test]
-        public void GodanBu()
+        [TestCase("", CForm.TeForm)]
+        [TestCase("", CForm.Present)]
+        [TestCase("", CForm.Past)]
+        [TestCase("", CForm.Provision)]
+        [TestCase("", CForm.Condition)]
+        [TestCase("", CForm.Imperative)]
+        [TestCase("運|ぼ|う", CForm.Volitional)]
+        [TestCase("", CForm.PresentContinuous)]
+        [TestCase("", CForm.PastContinuous)]
+        [TestCase("", CForm.Passive)]
+        [TestCase("", CForm.Causative)]
+        [TestCase("", CForm.CausativePassive)]
+        [TestCase("", CForm.Potential)]
+        public void GodanBu(string conjugatedWord, CForm form, Politeness politeness = Politeness.Plain, Polarity polarity = Polarity.Affirmative)
         {
             var word = "運ぶ";
             var wordClass = EdictType.v5b;
-            Assert.AreEqual("運|ぼ|う", JpConj.Conjugate(word, wordClass, CForm.Volitional, Politeness.Plain));
+
+            Assert.AreEqual(conjugatedWord, JpConj.Conjugate(word, wordClass, form, politeness, polarity));
         }
 
-        [Test]
-        public void GodanGu()
+        [TestCase("", CForm.TeForm)]
+        [TestCase("", CForm.Present)]
+        [TestCase("", CForm.Past)]
+        [TestCase("", CForm.Provision)]
+        [TestCase("", CForm.Condition)]
+        [TestCase("", CForm.Imperative)]
+        [TestCase("游|ご|う", CForm.Volitional)]
+        [TestCase("", CForm.PresentContinuous)]
+        [TestCase("", CForm.PastContinuous)]
+        [TestCase("", CForm.Passive)]
+        [TestCase("", CForm.Causative)]
+        [TestCase("", CForm.CausativePassive)]
+        [TestCase("", CForm.Potential)]
+        public void GodanGu(string conjugatedWord, CForm form, Politeness politeness = Politeness.Plain, Polarity polarity = Polarity.Affirmative)
         {
             var word = "游ぐ";
             var wordClass = EdictType.v5g;
-            Assert.AreEqual("游|ご|う", JpConj.Conjugate(word, wordClass, CForm.Volitional, Politeness.Plain));
+
+            Assert.AreEqual(conjugatedWord, JpConj.Conjugate(word, wordClass, form, politeness, polarity));
         }
 
-        [Test]
-        public void GodanKu()
+        [TestCase("", CForm.TeForm)]
+        [TestCase("", CForm.Present)]
+        [TestCase("", CForm.Past)]
+        [TestCase("", CForm.Provision)]
+        [TestCase("", CForm.Condition)]
+        [TestCase("", CForm.Imperative)]
+        [TestCase("艶め|こ|う", CForm.Volitional)]
+        [TestCase("", CForm.PresentContinuous)]
+        [TestCase("", CForm.PastContinuous)]
+        [TestCase("", CForm.Passive)]
+        [TestCase("", CForm.Causative)]
+        [TestCase("", CForm.CausativePassive)]
+        [TestCase("", CForm.Potential)]
+        public void GodanKu(string conjugatedWord, CForm form, Politeness politeness = Politeness.Plain, Polarity polarity = Polarity.Affirmative)
         {
             var word = "艶めく";
             var wordClass = EdictType.v5k;
-            Assert.AreEqual("艶め|こ|う", JpConj.Conjugate(word, wordClass, CForm.Volitional, Politeness.Plain));
+
+            Assert.AreEqual(conjugatedWord, JpConj.Conjugate(word, wordClass, form, politeness, polarity));
         }
 
-        [Test]
-        public void GodanIkuYuku()
+        [TestCase("", CForm.TeForm)]
+        [TestCase("", CForm.Present)]
+        [TestCase("", CForm.Past)]
+        [TestCase("", CForm.Provision)]
+        [TestCase("", CForm.Condition)]
+        [TestCase("", CForm.Imperative)]
+        [TestCase("", CForm.Volitional)]
+        [TestCase("", CForm.PresentContinuous)]
+        [TestCase("", CForm.PastContinuous)]
+        [TestCase("", CForm.Passive)]
+        [TestCase("", CForm.Causative)]
+        [TestCase("", CForm.CausativePassive)]
+        [TestCase("", CForm.Potential)]
+        public void GodanIkuYuku(string conjugatedWord, CForm form, Politeness politeness = Politeness.Plain, Polarity polarity = Polarity.Affirmative)
         {
             var word = "合点がいく"; // also 冴え行く
             var wordClass = EdictType.v5k_s;
+
+            Assert.AreEqual(conjugatedWord, JpConj.Conjugate(word, wordClass, form, politeness, polarity));
         }
 
-        [Test]
-        public void GodanMu()
+        [TestCase("", CForm.TeForm)]
+        [TestCase("", CForm.Present)]
+        [TestCase("", CForm.Past)]
+        [TestCase("", CForm.Provision)]
+        [TestCase("", CForm.Condition)]
+        [TestCase("", CForm.Imperative)]
+        [TestCase("刷り込|も|う", CForm.Volitional)]
+        [TestCase("", CForm.PresentContinuous)]
+        [TestCase("", CForm.PastContinuous)]
+        [TestCase("", CForm.Passive)]
+        [TestCase("", CForm.Causative)]
+        [TestCase("", CForm.CausativePassive)]
+        [TestCase("", CForm.Potential)]
+        public void GodanMu(string conjugatedWord, CForm form, Politeness politeness = Politeness.Plain, Polarity polarity = Polarity.Affirmative)
         {
             var word = "刷り込む";
             var wordClass = EdictType.v5m;
-            Assert.AreEqual("刷り込|も|う", JpConj.Conjugate(word, wordClass, CForm.Volitional, Politeness.Plain));
+
+            Assert.AreEqual(conjugatedWord, JpConj.Conjugate(word, wordClass, form, politeness, polarity));
         }
 
-        [Test]
-        public void GodanNu()
+        [TestCase("", CForm.TeForm)]
+        [TestCase("", CForm.Present)]
+        [TestCase("", CForm.Past)]
+        [TestCase("", CForm.Provision)]
+        [TestCase("", CForm.Condition)]
+        [TestCase("", CForm.Imperative)]
+        [TestCase("死|の|う", CForm.Volitional)]
+        [TestCase("", CForm.PresentContinuous)]
+        [TestCase("", CForm.PastContinuous)]
+        [TestCase("", CForm.Passive)]
+        [TestCase("", CForm.Causative)]
+        [TestCase("", CForm.CausativePassive)]
+        [TestCase("", CForm.Potential)]
+        public void GodanNu(string conjugatedWord, CForm form, Politeness politeness = Politeness.Plain, Polarity polarity = Polarity.Affirmative)
         {
             var word = "死ぬ";
             var wordClass = EdictType.v5n;
-            Assert.AreEqual("死|の|う", JpConj.Conjugate(word, wordClass, CForm.Volitional, Politeness.Plain));
+
+            Assert.AreEqual(conjugatedWord, JpConj.Conjugate(word, wordClass, form, politeness, polarity));
         }
 
-        [Test]
-        public void GodanRu()
+        [TestCase("", CForm.TeForm)]
+        [TestCase("", CForm.Present)]
+        [TestCase("", CForm.Past)]
+        [TestCase("", CForm.Provision)]
+        [TestCase("", CForm.Condition)]
+        [TestCase("", CForm.Imperative)]
+        [TestCase("あやま|ろ|う", CForm.Volitional)]
+        [TestCase("", CForm.PresentContinuous)]
+        [TestCase("", CForm.PastContinuous)]
+        [TestCase("", CForm.Passive)]
+        [TestCase("", CForm.Causative)]
+        [TestCase("", CForm.CausativePassive)]
+        [TestCase("", CForm.Potential)]
+        public void GodanRu(string conjugatedWord, CForm form, Politeness politeness = Politeness.Plain, Polarity polarity = Polarity.Affirmative)
         {
             var word = "あやまる";
             var wordClass = EdictType.v5r;
-            Assert.AreEqual("あやま|ろ|う", JpConj.Conjugate(word, wordClass, CForm.Volitional, Politeness.Plain));
+
+            Assert.AreEqual(conjugatedWord, JpConj.Conjugate(word, wordClass, form, politeness, polarity));
         }
 
-        [Test]
-        public void GodanRuIrregular()
+        [TestCase("", CForm.TeForm)]
+        [TestCase("", CForm.Present)]
+        [TestCase("", CForm.Past)]
+        [TestCase("", CForm.Provision)]
+        [TestCase("", CForm.Condition)]
+        [TestCase("", CForm.Imperative)]
+        [TestCase("あ||ろう", CForm.Volitional)]
+        [TestCase("", CForm.PresentContinuous)]
+        [TestCase("", CForm.PastContinuous)]
+        [TestCase("", CForm.Passive)]
+        [TestCase("", CForm.Causative)]
+        [TestCase("", CForm.CausativePassive)]
+        [TestCase("", CForm.Potential)]
+        public void GodanRuIrregular(string conjugatedWord, CForm form, Politeness politeness = Politeness.Plain, Polarity polarity = Polarity.Affirmative)
         {
             var word = "ある";
             var wordClass = EdictType.v5r_i;
 
-            Assert.AreEqual("あ||ろう", JpConj.Conjugate(word, wordClass, CForm.Volitional, Politeness.Plain));
+            Assert.AreEqual(conjugatedWord, JpConj.Conjugate(word, wordClass, form, politeness, polarity));
         }
 
-        [Test]
-        public void GodanSu()
+        [TestCase("", CForm.TeForm)]
+        [TestCase("", CForm.Present)]
+        [TestCase("", CForm.Past)]
+        [TestCase("", CForm.Provision)]
+        [TestCase("", CForm.Condition)]
+        [TestCase("", CForm.Imperative)]
+        [TestCase("螫|そ|う", CForm.Volitional)]
+        [TestCase("", CForm.PresentContinuous)]
+        [TestCase("", CForm.PastContinuous)]
+        [TestCase("", CForm.Passive)]
+        [TestCase("", CForm.Causative)]
+        [TestCase("", CForm.CausativePassive)]
+        [TestCase("", CForm.Potential)]
+        public void GodanSu(string conjugatedWord, CForm form, Politeness politeness = Politeness.Plain, Polarity polarity = Polarity.Affirmative)
         {
             var word = "螫す";
             var wordClass = EdictType.v5s;
-            Assert.AreEqual("螫|そ|う", JpConj.Conjugate(word, wordClass, CForm.Volitional, Politeness.Plain));
+
+            Assert.AreEqual(conjugatedWord, JpConj.Conjugate(word, wordClass, form, politeness, polarity));
         }
 
-        [Test]
-        public void GodanTsu()
+        [TestCase("", CForm.TeForm)]
+        [TestCase("", CForm.Present)]
+        [TestCase("", CForm.Past)]
+        [TestCase("", CForm.Provision)]
+        [TestCase("", CForm.Condition)]
+        [TestCase("", CForm.Imperative)]
+        [TestCase("持|と|う", CForm.Volitional)]
+        [TestCase("", CForm.PresentContinuous)]
+        [TestCase("", CForm.PastContinuous)]
+        [TestCase("", CForm.Passive)]
+        [TestCase("", CForm.Causative)]
+        [TestCase("", CForm.CausativePassive)]
+        [TestCase("", CForm.Potential)]
+        public void GodanTsu(string conjugatedWord, CForm form, Politeness politeness = Politeness.Plain, Polarity polarity = Polarity.Affirmative)
         {
             var word = "持つ";
             var wordClass = EdictType.v5t;
-            Assert.AreEqual("持|と|う", JpConj.Conjugate(word, wordClass, CForm.Volitional, Politeness.Plain));
+
+            Assert.AreEqual(conjugatedWord, JpConj.Conjugate(word, wordClass, form, politeness, polarity));
         }
 
-        [Test]
-        public void GodanU()
+        [TestCase("", CForm.TeForm)]
+        [TestCase("", CForm.Present)]
+        [TestCase("", CForm.Past)]
+        [TestCase("", CForm.Provision)]
+        [TestCase("", CForm.Condition)]
+        [TestCase("", CForm.Imperative)]
+        [TestCase("行|お|う", CForm.Volitional)]
+        [TestCase("", CForm.PresentContinuous)]
+        [TestCase("", CForm.PastContinuous)]
+        [TestCase("", CForm.Passive)]
+        [TestCase("", CForm.Causative)]
+        [TestCase("", CForm.CausativePassive)]
+        [TestCase("", CForm.Potential)]
+        public void GodanU(string conjugatedWord, CForm form, Politeness politeness = Politeness.Plain, Polarity polarity = Polarity.Affirmative)
         {
             var word = "行う";
             var wordClass = EdictType.v5u;
-            Assert.AreEqual("行|お|う", JpConj.Conjugate(word, wordClass, CForm.Volitional, Politeness.Plain));
+
+            Assert.AreEqual(conjugatedWord, JpConj.Conjugate(word, wordClass, form, politeness, polarity));
         }
 
-        [Test]
-        public void GodanUSpecialClass()
+        [TestCase("", CForm.TeForm)]
+        [TestCase("", CForm.Present)]
+        [TestCase("", CForm.Past)]
+        [TestCase("", CForm.Provision)]
+        [TestCase("", CForm.Condition)]
+        [TestCase("", CForm.Imperative)]
+        [TestCase("", CForm.Volitional)]
+        [TestCase("", CForm.PresentContinuous)]
+        [TestCase("", CForm.PastContinuous)]
+        [TestCase("", CForm.Passive)]
+        [TestCase("", CForm.Causative)]
+        [TestCase("", CForm.CausativePassive)]
+        [TestCase("", CForm.Potential)]
+        public void GodanUSpecialClass(string conjugatedWord, CForm form, Politeness politeness = Politeness.Plain, Polarity polarity = Polarity.Affirmative)
         {
             var word = "信を問う";
             var wordClass = EdictType.v5u_s;
@@ -174,57 +354,140 @@ namespace LibJpConjSharp.Tests
             var wordClass = EdictType.v5z;
         }
 
-        [Test]
-        public void IchidanZuru()
+        [TestCase("", CForm.TeForm)]
+        [TestCase("", CForm.Present)]
+        [TestCase("", CForm.Past)]
+        [TestCase("", CForm.Provision)]
+        [TestCase("", CForm.Condition)]
+        [TestCase("", CForm.Imperative)]
+        [TestCase("", CForm.Volitional)]
+        [TestCase("", CForm.PresentContinuous)]
+        [TestCase("", CForm.PastContinuous)]
+        [TestCase("", CForm.Passive)]
+        [TestCase("", CForm.Causative)]
+        [TestCase("", CForm.CausativePassive)]
+        [TestCase("", CForm.Potential)]
+        public void IchidanZuru(string conjugatedWord, CForm form, Politeness politeness = Politeness.Plain, Polarity polarity = Polarity.Affirmative)
         {
             var word = "観ずる";
             var wordClass = EdictType.vz;
+
+            Assert.AreEqual(conjugatedWord, JpConj.Conjugate(word, wordClass, form, politeness, polarity));
         }
 
-        [Test]
-        public void Kuru()
+        [TestCase("き||て", CForm.TeForm)]
+        [TestCase("く|る|", CForm.Present)]
+        [TestCase("き||た", CForm.Past)]
+        [TestCase("く|れ|ば", CForm.Provision)]
+        [TestCase("き||たら", CForm.Condition)]
+        [TestCase("こ|い|", CForm.Imperative)]
+        [TestCase("こ|よ|う", CForm.Volitional)]
+        [TestCase("き||ている", CForm.PresentContinuous)]
+        [TestCase("き||ていた", CForm.PastContinuous)]
+        [TestCase("こ||られる", CForm.Passive)]
+        [TestCase("こ||させる", CForm.Causative)]
+        [TestCase("こ||させられる", CForm.CausativePassive)]
+        [TestCase("こ||られる", CForm.Potential)]
+        public void Kuru(string conjugatedWord, CForm form, Politeness politeness = Politeness.Plain, Polarity polarity = Polarity.Affirmative)
         {
             var word = "くる";
             var wordClass = EdictType.vk;
 
-            Assert.AreEqual("き||た", JpConj.Conjugate(word, wordClass, CForm.Past, Politeness.Plain, Polarity.Affirmative));
-            Assert.AreEqual("き||て", JpConj.Conjugate(word, wordClass, CForm.TeForm, Politeness.Plain, Polarity.Affirmative));
-            Assert.AreEqual("こ|よ|う", JpConj.Conjugate(word, wordClass, CForm.Volitional, Politeness.Plain));
+            Assert.AreEqual(conjugatedWord, JpConj.Conjugate(word, wordClass, form, politeness, polarity));
         }
 
-        [Test]
-        public void IrregularNu()
+        [TestCase("", CForm.TeForm)]
+        [TestCase("", CForm.Present)]
+        [TestCase("", CForm.Past)]
+        [TestCase("", CForm.Provision)]
+        [TestCase("", CForm.Condition)]
+        [TestCase("", CForm.Imperative)]
+        [TestCase("", CForm.Volitional)]
+        [TestCase("", CForm.PresentContinuous)]
+        [TestCase("", CForm.PastContinuous)]
+        [TestCase("", CForm.Passive)]
+        [TestCase("", CForm.Causative)]
+        [TestCase("", CForm.CausativePassive)]
+        [TestCase("", CForm.Potential)]
+        public void IrregularNu(string conjugatedWord, CForm form, Politeness politeness = Politeness.Plain, Polarity polarity = Polarity.Affirmative)
         {
             var word = "死ぬ";
             var wordClass = EdictType.vn;
         }
 
-        [Test]
-        public void NounSuru()
+        [TestCase("", CForm.TeForm)]
+        [TestCase("", CForm.Present)]
+        [TestCase("", CForm.Past)]
+        [TestCase("", CForm.Provision)]
+        [TestCase("", CForm.Condition)]
+        [TestCase("", CForm.Imperative)]
+        [TestCase("", CForm.Volitional)]
+        [TestCase("", CForm.PresentContinuous)]
+        [TestCase("", CForm.PastContinuous)]
+        [TestCase("", CForm.Passive)]
+        [TestCase("", CForm.Causative)]
+        [TestCase("", CForm.CausativePassive)]
+        [TestCase("", CForm.Potential)]
+        public void NounSuru(string conjugatedWord, CForm form, Politeness politeness = Politeness.Plain, Polarity polarity = Polarity.Affirmative)
         {
             var word = "勉強";
             var wordClass = EdictType.vs;
         }
 
-        [Test]
-        public void Su()
+        [TestCase("", CForm.TeForm)]
+        [TestCase("", CForm.Present)]
+        [TestCase("", CForm.Past)]
+        [TestCase("", CForm.Provision)]
+        [TestCase("", CForm.Condition)]
+        [TestCase("", CForm.Imperative)]
+        [TestCase("", CForm.Volitional)]
+        [TestCase("", CForm.PresentContinuous)]
+        [TestCase("", CForm.PastContinuous)]
+        [TestCase("", CForm.Passive)]
+        [TestCase("", CForm.Causative)]
+        [TestCase("", CForm.CausativePassive)]
+        [TestCase("", CForm.Potential)]
+        public void Su(string conjugatedWord, CForm form, Politeness politeness = Politeness.Plain, Polarity polarity = Polarity.Affirmative)
         {
             var word = "熟す";
             var wordClass = EdictType.vs_c;
         }
 
-        [Test]
-        public void SuruIrregular()
+        [TestCase("|し|て", CForm.TeForm)]
+        [TestCase("|する|", CForm.Present)]
+        [TestCase("|し|た", CForm.Past)]
+        [TestCase("|すれ|ば", CForm.Provision)]
+        [TestCase("|し|たら", CForm.Condition)]
+        [TestCase("|(しろ/せよ)|", CForm.Imperative)]
+        [TestCase("|し|よう", CForm.Volitional)]
+        [TestCase("|し|ている", CForm.PresentContinuous)]
+        [TestCase("|し|ていた", CForm.PastContinuous)]
+        [TestCase("||される", CForm.Passive)]
+        [TestCase("||させる", CForm.Causative)]
+        [TestCase("||させられる", CForm.CausativePassive)]
+        [TestCase("||できる", CForm.Potential)]
+        public void SuruIrregular(string conjugatedWord, CForm form, Politeness politeness = Politeness.Plain, Polarity polarity = Polarity.Affirmative)
         {
             var word = "する";
             var wordClass = EdictType.vs_i;
 
-            Assert.AreEqual("|し|よう", JpConj.Conjugate(word, wordClass, CForm.Volitional, Politeness.Plain, Polarity.Affirmative));
-            Assert.AreEqual("|し|て", JpConj.Conjugate(word, wordClass, CForm.TeForm, Politeness.Plain, Polarity.Affirmative));
+            Assert.AreEqual(conjugatedWord, JpConj.Conjugate(word, wordClass, form, politeness, polarity));
         }
 
-        [Test]
-        public void SuruSpecial()
+        [TestCase("", CForm.TeForm)]
+        [TestCase("", CForm.Present)]
+        [TestCase("", CForm.Past)]
+        [TestCase("", CForm.Provision)]
+        [TestCase("", CForm.Condition)]
+        [TestCase("", CForm.Imperative)]
+        [TestCase("則|し|よう", CForm.Volitional)]
+        [TestCase("", CForm.PresentContinuous)]
+        [TestCase("", CForm.PastContinuous)]
+        [TestCase("", CForm.Passive)]
+        [TestCase("", CForm.Causative)]
+        [TestCase("", CForm.CausativePassive)]
+        [TestCase("", CForm.Potential)]
+        public void SuruSpecial(string conjugatedWord, CForm form, Politeness politeness = Politeness.Plain, Polarity polarity = Polarity.Affirmative)
         {
             var word = "則する";
             var wordClass = EdictType.vs_s;
