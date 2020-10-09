@@ -137,8 +137,16 @@ namespace LibJpConjSharp
                     //plain
                     if (affirmative != 0)
                     {
-                        if (type == EdictType.vs_i)
+                        if (type == EdictType.v5r_i)
+                        {
+                            return "|" + radical + "|ろう";
+                        }
+
+                        if (!EdictTypeUtils.IsGodan(type))
+                        {
                             return VerbStem.oForm(radical, type) + "|よう";
+                        }
+
                         return VerbStem.oForm(radical, type) + "|う";
                     }
 

@@ -39,6 +39,32 @@ namespace LibJpConjSharp
 
     public static class EdictTypeUtils
     {
+        public static bool IsGodan(EdictType type)
+        {
+            switch (type)
+            {
+                case EdictType.v5:
+                case EdictType.v5aru:
+                case EdictType.v5b:
+                case EdictType.v5g:
+                case EdictType.v5k:
+                case EdictType.v5k_s:
+                case EdictType.v5m:
+                case EdictType.v5n:
+                case EdictType.v5r:
+                case EdictType.v5r_i:
+                case EdictType.v5s:
+                case EdictType.v5t:
+                case EdictType.v5u:
+                case EdictType.v5u_s:
+                case EdictType.v5uru:
+                case EdictType.v5z:
+                    return true;
+                default:
+                    return false;
+            }
+        }
+        
         public static EdictType FromDescription(string description)
         {
             return mapping[description];
