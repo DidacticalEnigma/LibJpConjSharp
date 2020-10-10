@@ -2,7 +2,7 @@
 include-pdbs true
 title LibJpConjSharp
 projectUrl https://github.com/milleniumbug/LibJpConjSharp
-licenseUrl https://opensource.org/licenses/Apache-2.0
+licenseExpression Apache-2.0
 description
   This is a C# port of the LibJpConj library (a part of the JapKatsuyou project).
 
