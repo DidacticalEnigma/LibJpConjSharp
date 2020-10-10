@@ -65,6 +65,12 @@ namespace LibJpConjSharp
                 case CForm.TeForm:
                     if (affirmative != 0)
                         return VerbStem.tForm(radical, type) + tEnd(end, true);
+                    if (type == EdictType.v5r_i)
+                    {
+                        var aru = Utils.Chop(radical, 1);
+                        return aru + "||なくて";
+                    }
+                    
                     return VerbStem.aForm(radical, type) + "|なくて";
 
                 case CForm.Present:
@@ -77,6 +83,12 @@ namespace LibJpConjSharp
                     //plain
                     if (affirmative != 0)
                         return VerbStem.uForm(radical, type) + "|";
+                    if (type == EdictType.v5r_i)
+                    {
+                        var aru = Utils.Chop(radical, 1);
+                        return aru + "||ない";
+                    }
+                    
                     return VerbStem.aForm(radical, type) + "|ない";
 
                 case CForm.Past:
@@ -142,7 +154,7 @@ namespace LibJpConjSharp
                             return "|" + radical + "|ろう";
                         }
 
-                        if (!EdictTypeUtils.IsGodan(type))
+                        if (!EdictTypeUtils.IsGodan(type) && type != EdictType.vn)
                         {
                             return VerbStem.oForm(radical, type) + "|よう";
                         }

@@ -95,8 +95,8 @@ namespace LibJpConjSharp
                 return radical + "ら";
 
                 case EdictType.v5r_i://Godan verb with 'ru' ending (irregular verb) ある
-                radical = Utils.Chop(radical, 2);
-                return radical + "|";
+                radical = Utils.Chop(radical, 1);
+                return "|" + radical + "ら";
 
                 case EdictType.v5s://Godan verb with 'su' ending
                 return radical + "さ";

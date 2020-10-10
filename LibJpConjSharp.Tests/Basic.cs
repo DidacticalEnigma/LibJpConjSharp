@@ -254,6 +254,8 @@ namespace LibJpConjSharp.Tests
         [TestCase("||ない", CForm.Present, Politeness.Plain, Polarity.Negative)]
         [TestCase("|ある|のをやめよう", CForm.Volitional, Politeness.Plain, Polarity.Negative)]
         [TestCase("|あり|ましょう", CForm.Volitional, Politeness.Polite, Polarity.Affirmative)]
+        [TestCase("|あら|れます", CForm.Passive, Politeness.Polite, Polarity.Affirmative)]
+        [TestCase("|あら|れない", CForm.Passive, Politeness.Plain, Polarity.Negative)]
         public void GodanRuIrregular(string conjugatedWord, CForm form, Politeness politeness = Politeness.Plain, Polarity polarity = Polarity.Affirmative)
         {
             var word = "ある";
@@ -369,7 +371,7 @@ namespace LibJpConjSharp.Tests
         [TestCase("観|じ|られる", CForm.Passive)]
         [TestCase("観|じ|させる", CForm.Causative)]
         [TestCase("観|じ|させられる", CForm.CausativePassive)]
-        [TestCase("観|じ|れる", CForm.Potential)]
+        [TestCase("観|(じ/ず)れ|る", CForm.Potential)]
         public void IchidanZuru(string conjugatedWord, CForm form, Politeness politeness = Politeness.Plain, Polarity polarity = Polarity.Affirmative)
         {
             var word = "観ずる";
