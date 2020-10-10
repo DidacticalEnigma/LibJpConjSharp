@@ -145,7 +145,7 @@ namespace LibJpConjSharp
 
                 case EdictType.vs_s: //suru verb - special class
                 radical = Utils.Chop(radical, 2);
-                return radical + "|し";
+                return radical + "|さ";
             }
 
             return radical;
@@ -260,7 +260,7 @@ namespace LibJpConjSharp
 
                 case EdictType.vs_s: //suru verb - special class
                 radical = Utils.Chop(radical, 2);
-                return radical + "|(すれ/せ)";
+                return radical + "|せ";
 
                 default:
                 break;

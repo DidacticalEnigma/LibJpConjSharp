@@ -511,7 +511,7 @@ namespace LibJpConjSharp.Tests
         [TestCase("愛|し|て", CForm.TeForm)]
         [TestCase("愛|する|", CForm.Present)]
         [TestCase("愛|し|た", CForm.Past)]
-        [TestCase("愛|すれ|ば", CForm.Provision)]
+        [TestCase("愛|せ|ば", CForm.Provision)]
         [TestCase("愛|し|たら", CForm.Condition)]
         [TestCase("愛|(しろ/せよ)|", CForm.Imperative)]
         [TestCase("愛|し|よう", CForm.Volitional)]
@@ -520,8 +520,8 @@ namespace LibJpConjSharp.Tests
         //[TestCase("愛||される", CForm.Passive)]
         //[TestCase("愛||させる", CForm.Causative)]
         //[TestCase("愛||させられる", CForm.CausativePassive)]
-        [TestCase("愛||せる", CForm.Potential)]
-        [TestCase("愛||さない", CForm.Present, Politeness.Plain, Polarity.Negative)]
+        [TestCase("愛|せ|る", CForm.Potential)]
+        [TestCase("愛|さ|ない", CForm.Present, Politeness.Plain, Polarity.Negative)]
         public void SuruSpecial(string conjugatedWord, CForm form, Politeness politeness = Politeness.Plain, Polarity polarity = Polarity.Affirmative)
         {
             var word = "愛する";

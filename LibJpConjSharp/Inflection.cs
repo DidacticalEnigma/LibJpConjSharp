@@ -196,6 +196,10 @@ namespace LibJpConjSharp
                         type = EdictType.v0; //to prevent changing the radical when using eForm
                         bar = "";
                     }
+                    else if (type == EdictType.vs_s)
+                    {
+                        
+                    }
                     else if (type >= EdictType.vs)
                     { //suru verbs numbers are 27 26 25 24
                         if (type != EdictType.vs_c) // suru verb number 25 ends with su,  no need to chop it
