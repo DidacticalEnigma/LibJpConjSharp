@@ -204,6 +204,16 @@ namespace LibJpConjSharp
                         type = EdictType.v0; //to prevent changing the radical when using eForm
                         bar = "";
                     }
+                    else if (type == EdictType.vk)
+                    {
+                        if (radical.EndsWith("く"))
+                        {
+                            radical = Utils.Chop(radical, 1) + "こ";
+                        }
+                        radical += "||られ";
+                        type = EdictType.v0; //to prevent changing the radical when using eForm
+                        bar = "";
+                    }
 
                     if (polite != 0)
                     {
@@ -230,6 +240,10 @@ namespace LibJpConjSharp
                         radical += "||さ";
                         type = EdictType.v0; //to prevent changing the radical when using eForm
                         bar = "";
+                    }
+                    else if(type == EdictType.vk || type == EdictType.vz)
+                    {
+                        bar = "|ら";
                     }
 
                     if (polite != 0)
@@ -258,6 +272,10 @@ namespace LibJpConjSharp
                         type = EdictType.v0; //to prevent changing the radical when using eForm
                         bar = "";
                     }
+                    else if(type == EdictType.vk || type == EdictType.vz)
+                    {
+                        bar = "|さ";
+                    }
 
                     if (polite != 0)
                     {
@@ -284,6 +302,10 @@ namespace LibJpConjSharp
                         radical += "||さ";
                         type = EdictType.v0; //to prevent changing the radical when using eForm
                         bar = "";
+                    }
+                    else if(type == EdictType.vk || type == EdictType.vz)
+                    {
+                        bar = "|さ";
                     }
 
                     if (polite != 0)
