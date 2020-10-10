@@ -56,6 +56,7 @@ namespace LibJpConjSharp
                 return radical;
 
                 case EdictType.v1:  //Ichidan verb
+                case EdictType.v1_s:  //Ichidan verb - kureru special class
                 return radical;
 
                 case EdictType.v2a_s:   //Nidan verb with 'u' ending (archaic)
@@ -176,6 +177,7 @@ namespace LibJpConjSharp
                 return radical;
 
                 case EdictType.v1:  //Ichidan verb
+                case EdictType.v1_s:  //Ichidan verb - kureru special class
                 return radical + "れ";
 
                 case EdictType.v2a_s:   //Nidan verb with 'u' ending (archaic)
@@ -261,9 +263,6 @@ namespace LibJpConjSharp
                 case EdictType.vs_s: //suru verb - special class
                 radical = Utils.Chop(radical, 2);
                 return radical + "|せ";
-
-                default:
-                break;
             }
 
             return radical;
@@ -291,6 +290,9 @@ namespace LibJpConjSharp
 
                 case EdictType.v1:  //Ichidan verb
                 return radical + "|(ろ/よ)";
+                
+                case EdictType.v1_s:  //Ichidan verb - kureru special class
+                return radical + "|";
 
                 case EdictType.v2a_s:   //Nidan verb with 'u' ending (archaic)
                 return radical; //TODO: check
@@ -330,9 +332,6 @@ namespace LibJpConjSharp
                 case EdictType.vs_s: //suru verb - special class
                 radical = Utils.Chop(radical, 1);
                 return radical + "|(しろ/せよ)";
-
-                default:
-                break;
             }
 
             //if not included in special cases, the form is same as eForm
@@ -372,6 +371,7 @@ namespace LibJpConjSharp
                 return radical;
 
                 case EdictType.v1:  //Ichidan verb
+                case EdictType.v1_s:  //Ichidan verb - kureru special class
                 return radical;
 
                 case EdictType.v2a_s:   //Nidan verb with 'u' ending (archaic)
@@ -466,9 +466,6 @@ namespace LibJpConjSharp
                 case EdictType.vs_s: //suru verb - special class
                 radical = Utils.Chop(radical, 2);
                 return radical + "|し";
-
-                default:
-                break;
             }
 
             return radical;
@@ -498,6 +495,7 @@ namespace LibJpConjSharp
                 return radical;
 
                 case EdictType.v1:  //Ichidan verb
+                case EdictType.v1_s:  //Ichidan verb - kureru special class
                 return radical + "る";
 
                 case EdictType.v2a_s:   //Nidan verb with 'u' ending (archaic)
@@ -581,9 +579,7 @@ namespace LibJpConjSharp
                 case EdictType.vs_s: //suru verb - special class
                 radical = Utils.Chop(radical, 2);
                 return radical + "|する";
-
-                default:
-                break;
+                
             }
 
             return radical;
@@ -614,6 +610,7 @@ namespace LibJpConjSharp
                 return radical;
 
                 case EdictType.v1:  //Ichidan verb
+                case EdictType.v1_s:  //Ichidan verb - kureru special class
                 return radical;
 
                 case EdictType.v2a_s:   //Nidan verb with 'u' ending (archaic)
@@ -703,9 +700,6 @@ namespace LibJpConjSharp
                 case EdictType.vs_s: //suru verb - special class
                 radical = Utils.Chop(radical, 2);
                 return radical + "|し";
-
-                default:
-                break;
             }
 
             return radical;
@@ -736,6 +730,7 @@ namespace LibJpConjSharp
                 return radical;
 
                 case EdictType.v1:  //Ichidan verb
+                case EdictType.v1_s:  //Ichidan verb - kureru special class
                 return radical;
 
                 case EdictType.v2a_s:   //Nidan verb with 'u' ending (archaic)
@@ -825,9 +820,6 @@ namespace LibJpConjSharp
                 case EdictType.vs_s: //suru verb - special class
                 radical = Utils.Chop(radical, 2);
                 return radical + "|し";
-
-                default:
-                break;
             }
 
             return radical;

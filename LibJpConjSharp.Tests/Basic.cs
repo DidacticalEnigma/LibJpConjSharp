@@ -35,6 +35,31 @@ namespace LibJpConjSharp.Tests
 
             Assert.AreEqual(conjugatedWord, JpConj.Conjugate(word, wordClass, form, politeness, polarity));
         }
+        
+        [TestCase("くれ||て", CForm.TeForm)]
+        [TestCase("くれ|る|", CForm.Present)]
+        [TestCase("くれ||た", CForm.Past)]
+        [TestCase("くれ|れ|ば", CForm.Provision)]
+        [TestCase("くれ||たら", CForm.Condition)]
+        [TestCase("くれ||", CForm.Imperative)]
+        [TestCase("くれ||よう", CForm.Volitional)]
+        [TestCase("くれ||ている", CForm.PresentContinuous)]
+        [TestCase("くれ||ていた", CForm.PastContinuous)]
+        [TestCase("くれ||られる", CForm.Passive)]
+        [TestCase("くれ||させる", CForm.Causative)]
+        [TestCase("くれ||させられる", CForm.CausativePassive)]
+        [TestCase("くれ||られる", CForm.Potential)]
+        [TestCase("くれ||ない", CForm.Present, Politeness.Plain, Polarity.Negative)]
+        [TestCase("くれ||ます", CForm.Present, Politeness.Polite, Polarity.Affirmative)]
+        [TestCase("くれ||ましょう", CForm.Volitional, Politeness.Polite, Polarity.Affirmative)]
+        [TestCase("くれ|る|のをやめよう", CForm.Volitional, Politeness.Plain, Polarity.Negative)]
+        public void IchidanKureru(string conjugatedWord, CForm form, Politeness politeness = Politeness.Plain, Polarity polarity = Polarity.Affirmative)
+        {
+            var word = "くれる";
+            var wordClass = EdictType.v1_s;
+
+            Assert.AreEqual(conjugatedWord, JpConj.Conjugate(word, wordClass, form, politeness, polarity));
+        }
 
         [Test]
         [Ignore("archaic verbs not supported yet")]

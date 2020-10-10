@@ -64,6 +64,32 @@ namespace LibJpConjSharp
                     return false;
             }
         }
+
+        public static bool IsIchidan(EdictType type)
+        {
+            switch (type)
+            {
+                case EdictType.v1:
+                case EdictType.v1_s:
+                    return true;
+            }
+
+            return false;
+        }
+
+        public static bool IsSuru(EdictType type)
+        {
+            switch (type)
+            {
+                case EdictType.vs:
+                case EdictType.vs_c:
+                case EdictType.vs_i:
+                case EdictType.vs_s:
+                    return true;
+            }
+
+            return false;
+        }
         
         public static EdictType FromDescription(string description)
         {
@@ -199,9 +225,10 @@ namespace LibJpConjSharp
         vs_i = 26,
 
         [Description("suru verb - special class")]
-        vs_s = 27
+        vs_s = 27,
 
-        // Ichidan verb - kureru special class
+        [Description("Ichidan verb - kureru special class")]
+        v1_s = 28
     }
 
     /*

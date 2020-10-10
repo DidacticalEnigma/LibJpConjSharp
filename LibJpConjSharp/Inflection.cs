@@ -190,7 +190,7 @@ namespace LibJpConjSharp
 
                 case CForm.Potential:
 
-                    if (type == EdictType.v1)
+                    if (EdictTypeUtils.IsIchidan(type))
                     {
                         radical += "||られ"; // radical + られ
                         type = EdictType.v0; //to prevent changing the radical when using eForm
@@ -200,7 +200,7 @@ namespace LibJpConjSharp
                     {
                         
                     }
-                    else if (type >= EdictType.vs)
+                    else if (EdictTypeUtils.IsSuru(type))
                     { //suru verbs numbers are 27 26 25 24
                         if (type != EdictType.vs_c) // suru verb number 25 ends with su,  no need to chop it
                             radical = Utils.Chop(radical, 1);
@@ -231,13 +231,13 @@ namespace LibJpConjSharp
                     return VerbStem.eForm(radical, type) + bar + "ない";
 
                 case CForm.Passive:
-                    if (type == EdictType.v1)
+                    if (EdictTypeUtils.IsIchidan(type))
                     {
                         radical += "||ら";
                         type = EdictType.v0; //to prevent changing the radical when using eForm
                         bar = "";
                     }
-                    else if (type >= EdictType.vs)
+                    else if (EdictTypeUtils.IsSuru(type))
                     { //suru verbs numbers are 27 26 25 24
                         if (type != EdictType.vs_c) // suru verb number 27 ends with su,  no need to chop it
                             radical = Utils.Chop(radical, 1);
@@ -262,13 +262,13 @@ namespace LibJpConjSharp
                     return VerbStem.aForm(radical, type) + bar + "れない";
 
                 case CForm.Causative:
-                    if (type == EdictType.v1)
+                    if (EdictTypeUtils.IsIchidan(type))
                     {
                         radical += "||さ";
                         type = EdictType.v0; //to prevent changing the radical when using eForm
                         bar = "";
                     }
-                    else if (type >= EdictType.vs)
+                    else if (EdictTypeUtils.IsSuru(type))
                     { //suru verbs numbers are 27 26 25 24
                         if (type != EdictType.vs_c) // suru verb number 27 ends with su,  no need to chop it
                             radical = Utils.Chop(radical, 1);
@@ -293,13 +293,13 @@ namespace LibJpConjSharp
                     return VerbStem.aForm(radical, type) + bar + "せない";
 
                 case CForm.CausativePassive:
-                    if (type == EdictType.v1)
+                    if (EdictTypeUtils.IsIchidan(type))
                     {
                         radical += "||さ";
                         type = EdictType.v0; //to prevent changing the radical when using eForm
                         bar = "";
                     }
-                    else if (type >= EdictType.vs)
+                    else if (EdictTypeUtils.IsSuru(type))
                     { //suru verbs numbers are 27 26 25 24
                         if (type != EdictType.vs_c) // suru verb number 27 ends with su,  no need to chop it
                             radical = Utils.Chop(radical, 1);
@@ -362,9 +362,6 @@ namespace LibJpConjSharp
 
                 case KForm.ImperativeE:
                     return VerbStem.eImpForm(radical, type);
-
-                default:
-                    break;
             }
 
             return verb;
