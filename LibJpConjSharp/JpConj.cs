@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using LibJpConjSharp.Deconjugation;
 
 namespace LibJpConjSharp
 {
@@ -14,6 +14,11 @@ namespace LibJpConjSharp
         public static string Katsuyou(string verb, EdictType type, KForm form)
         {
             return Inflection.Katsuyou(verb, type, form);
+        }
+
+        public static IEnumerable<DeconjugationResult> Deconjugate(string word, bool fuzzy = false, int recursionDepthLimit = int.MaxValue)
+        {
+            return Deconjugation.Deconjugation.Unconjugate(word, fuzzy, recursionDepthLimit);
         }
     }
 }

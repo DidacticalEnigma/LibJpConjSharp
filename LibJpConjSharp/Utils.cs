@@ -20,13 +20,17 @@
   limitations under the License.
  */
 
+using System;
+using System.ComponentModel;
+using System.Reflection;
+
 namespace LibJpConjSharp
 {
     internal static class Utils
     {
         public static string Right(string input, int n)
         {
-            if(n >= input.Length || n < 0)
+            if (n >= input.Length || n < 0)
                 return input;
             return input.Substring(input.Length - n);
         }
@@ -35,9 +39,30 @@ namespace LibJpConjSharp
         {
             if (n < 0)
                 return Chop(input, 0);
-            if(n >= input.Length)
+            if (n >= input.Length)
                 return "";
             return input.Remove(input.Length - n);
+        }
+
+        public static string RemoveLastCharacter(string input)
+        {
+            return input.Substring(0, input.Length - 1);
+        }
+
+        // https://stackoverflow.com/questions/2650080/how-to-get-c-sharp-enum-description-from-value
+        public static string GetEnumDescription(Enum value)
+        {
+            FieldInfo fi = value.GetType().GetField(value.ToString());
+
+            DescriptionAttribute[] attributes =
+                (DescriptionAttribute[])fi.GetCustomAttributes(
+                    typeof(DescriptionAttribute),
+                    false);
+
+            if(attributes.Length > 0)
+                return attributes[0].Description;
+            else
+                return value.ToString();
         }
     }
 }
